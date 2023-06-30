@@ -3,18 +3,15 @@ import { Todo } from "../models/Todo.js";
 import { api } from "./AxiosService.js";
 
 class TodosService {
-  constructor() {
-    this.api = api
-  }
 
   async create(data) {
-    const res = await this.api.post('api/todos', data)
+    const res = await api.post('api/todos', data)
     AppState.todos.push(new Todo(res.data))
     AppState.emit('todos')
   }
 
   async getAll() {
-    const res = await this.api.get('api/todos')
+    const res = await api.get('api/todos')
     AppState.todos = res.data.map(obj => new Todo(obj))
   }
 
@@ -22,7 +19,7 @@ class TodosService {
     const todoItemIndex = AppState.todos.findIndex(td => td.id == id)
     if (todoItemIndex != -1) {
       const todoItem = AppState.todos[todoItemIndex]
-      const res = await this.api.put(`api/todos/${id}`, { completed: !todoItem.completed })
+      const res = await api.put(`api/todos/${id}`, { completed: !todoItem.completed })
       if (res.data) {
         AppState.todos.splice(todoItemIndex, 1, new Todo(res.data))
         AppState.emit('todos')
@@ -31,7 +28,7 @@ class TodosService {
   }
 
   async delete(id) {
-    const res = await this.api.delete(`api/todos/${id}`)
+    const res = await api.delete(`api/todos/${id}`)
     if (res.data) {
       const todoItemIndex = AppState.todos.findIndex(td => td.id == id)
       if (todoItemIndex != -1) {

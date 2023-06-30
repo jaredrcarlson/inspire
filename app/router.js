@@ -1,3 +1,4 @@
+import { ImagesController } from "./controllers/ImagesController.js";
 import { TodosController } from "./controllers/TodosController.js";
 
 /**
@@ -7,7 +8,7 @@ import { TodosController } from "./controllers/TodosController.js";
 export const router = [
   {
     path: '',
-    controller: TodosController,
+    controller: [ImagesController, TodosController],
     view: ''
   }
 ]
