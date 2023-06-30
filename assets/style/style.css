@@ -8,11 +8,15 @@ body {
   text-decoration: line-through;
 }
 
+/* FIXME - transition not working */
 .quote-area {
   transition: 1s ease-in-out;
 }
 
 .quote-area:hover {
   cursor: default;
-  text-align: end;
+}
+
+.blur {
+  filter: blur(.5px);
 }
