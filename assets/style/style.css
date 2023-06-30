@@ -7,3 +7,12 @@ body {
 .todo-completed {
   text-decoration: line-through;
 }
+
+.quote-area {
+  transition: 1s ease-in-out;
+}
+
+.quote-area:hover {
+  cursor: default;
+  text-align: end;
+}

@@ -2,7 +2,6 @@ import { AppState } from "../AppState.js";
 import { api } from "./AxiosService.js";
 
 class ImagesService {
-
   async getRandomImage() {
     const res = await api.get('api/images')
     if (res.data) {

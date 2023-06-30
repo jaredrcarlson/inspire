@@ -11,6 +11,7 @@ class ObservableAppState extends EventEmitter {
   socketData = []
 
   image = null
+  quote = null
 
   /** @type {import('./models/Todo.js').Todo[]} */
   todos = []

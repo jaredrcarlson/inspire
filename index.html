@@ -48,16 +48,16 @@
 
     <section id="router-view">
 
-      <!-- SECTION BACKGROUND IMAGE AUTHOR -->
+      <!-- SECTION BACKGROUND IMAGE & IMAGE AUTHOR -->
       <section class="container-fluid">
-        <row class="justify-content-start">
-          <div class="ms-3 col-2 bg-dark text-light rounded opacity-75">
-            <div class="fw-bold py-2 px-4 caption">
+        <div class="row justify-content-start">
+          <div class="col-2 text-light">
+            <div class="py-2 px-4 caption fw-bolder">
               <p class="m-0">Image by</p>
-              <p id="image-author" class="my-0 ms-2 fs-4">Hank Aaron</p>
+              <p id="image-author" class="my-0 ms-2">Hank Aaron</p>
             </div>
           </div>
-        </row>
+        </div>
       </section>
 
       <!-- SECTION TODOS -->
@@ -68,6 +68,33 @@
           </div>
         </div>
       </section>
+
+      <!-- SECTION QUOTE & QUOTE AUTHOR -->
+      <section class="container-fluid">
+        <div class="row justify-content-around">
+          <div class="col-10 ms-3 quote-area text-center text-light">
+            <div class="py-2 caption" onmouseover="app.QuotesController.show('quote-author')"
+              onmouseleave="app.QuotesController.hide('quote-author')">
+              <div id="quote" class="m-0"></div>
+              <div id="quote-author" class="m-0" style="display:none;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION BACKGROUND IMAGE & IMAGE AUTHOR -->
+      <section class="container-fluid">
+        <div class="row justify-content-start">
+          <div class="ms-3 col-10 bg-dark text-light rounded-pill opacity-75">
+            <!-- <div class="fw-bold py-2 px-4 caption">
+              <p class="m-0">Image by</p>
+              <p id="image-author" class="my-0 ms-2 fs-4">Hank Aaron</p>
+            </div> -->
+          </div>
+        </div>
+      </section>
+
+
 
     </section>
 
