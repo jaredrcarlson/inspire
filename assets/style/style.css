@@ -1,0 +1,4 @@
+/* BASIC STYLES HERE */
+.todo-completed {
+  text-decoration: line-through;
+}
