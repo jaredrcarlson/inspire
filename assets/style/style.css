@@ -20,3 +20,11 @@ body {
 .blur {
   filter: blur(.5px);
 }
+
+.font-rh-mono {
+  font-family: 'Red Hat Mono', monospace;
+}
+
+.font-rh-disp {
+  font-family: 'Red Hat Display', sans-serif;
+}

@@ -10,12 +10,37 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css"
     integrity="sha512-fXnjLwoVZ01NUqS/7G5kAnhXNXat6v7e3M9PhoMHOTARUMCaf5qNO84r5x9AFf5HDzm3rEZD8sb/n6dZ19SzFA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital@0;1&family=Red+Hat+Mono:wght@500&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="assets/style/main.css">
   <link rel="stylesheet" href="assets/style/style.css">
   <title>inspire</title>
 </head>
 
-<body>
+<style>
+  body.debug .container,
+  body.debug .container-fluid {
+    outline: 2px double blue;
+    outline-offset: -2px;
+  }
+
+  body.debug .row {
+    outline: 2px dashed red;
+    outline-offset: -2px;
+  }
+
+  body.debug [class*="col-"] {
+    outline: 2px dotted forestgreen;
+    outline-offset: -3px;
+  }
+</style>
+
+<body class="">
   <!-- SECTION -->
   <header>
     <!-- <nav class="navbar navbar-dark navbar-expand bg-dark text-light px-2">
@@ -75,8 +100,8 @@
           <div class="col-10 ms-3 quote-area text-center text-light">
             <div class="py-2 caption" onmouseover="app.QuotesController.show('quote-author')"
               onmouseleave="app.QuotesController.hide('quote-author')">
-              <div id="quote" class="m-0"></div>
-              <div id="quote-author" class="m-0" style="display:none;"></div>
+              <div id="quote" class="m-0 font-rh-display"></div>
+              <i id="quote-author" class="m-0 font-rh-display" style="display:none;"></i>
             </div>
           </div>
         </div>
@@ -88,18 +113,19 @@
           <div class="col-10 bg-dark text-light rounded-pill opacity-75">
 
             <div class="row py-2 justify-content-between">
-              <div class="col-2">
+
+              <div class="col-2 ms-5">
                 Weather
               </div>
 
-              <div class="col-4">
-                Time
+              <div class="col-4 font-rh-mono text-center">
+                <div id="clock-time" class="fs-4"></div>
+                <div id="clock-date" class="fs-5"></div>
               </div>
 
-              <div class="col-2">
+              <div class="col-2 me-5">
                 Account
               </div>
-
 
             </div>
 
