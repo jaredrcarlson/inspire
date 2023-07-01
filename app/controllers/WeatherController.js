@@ -4,9 +4,9 @@ import { Pop } from "../utils/Pop.js"
 import { setHTML, setText } from "../utils/Writer.js"
 
 function _draw() {
-  setText('weather-temp', AppState.weather.temperatureDisplay)
-  setText('weather-kind', AppState.weather.kind)
-  setHTML('weather-icon', `<img class="weather-img" src="${AppState.weather.iconUrl}" alt="${AppState.weather.kind}">`)
+  setText('weatherTemp', AppState.weather.temperatureDisplay)
+  setText('weatherKind', AppState.weather.kind)
+  setHTML('weatherIcon', `<img class="weather-img" src="${AppState.weather.iconUrl}" alt="${AppState.weather.kind}">`)
 }
 
 export class WeatherController {

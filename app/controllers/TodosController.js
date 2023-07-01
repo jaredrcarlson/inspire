@@ -5,15 +5,39 @@ import { Pop } from "../utils/Pop.js"
 import { setHTML } from "../utils/Writer.js"
 
 function _draw() {
-  let template = /*html*/`
-    <p class="fs-5 p-2 text-secondary">${_remainingCount()} Todos remaining</p>
-    <form onsubmit="app.TodosController.create(event)" class="mb-3 d-flex align-items-center justify-content-between">
-      <input type="text" class="form-control mx-2" placeholder="New Todo" maxlength="60" name="description" required aria-label="Description" aria-describedby="newTodoDescription">
-      <button type="submit" class="mx-1 btn btn-success"><i class="mdi mdi-plus"></i></button>
-    </form>
+  let oncanvasTemplate = /*html*/`
+  <div class="py-2 d-flex align-items-center justify-content-around text-bg-dark font-rh-mono fs-5 rounded-pill opacity-75">
+    <div class="ms-2 px-2 border border-2 rounded-pill">${_remainingCount()}</div>
+    <div>To-Do Items</div>
+    <button class="btn btn-dark rounded-pill fs-4" data-bs-toggle="offcanvas" data-bs-target="#todoList" aria-controls="todoList">></button>
+  </div>
   `
-  AppState.todos.forEach(td => template += td.ListTemplate)
-  setHTML('todo-list', template)
+
+  let offcanvasTemplate = /*html*/`
+    <div class="col-3 font-rh-display">
+      <div id="todoList" class="p-3 text-bg-dark rounded offcanvas offcanvas-end">
+        <div class="offcanvas-header font-rh-mono fs-5">
+          <div class="ms-2 px-2 border border-2 rounded-pill">${_remainingCount()}</div>
+          <div>To-Do Items</div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <form onsubmit="app.TodosController.create(event)"
+            class="mb-3 d-flex align-items-center justify-content-between">
+            <input type="text" class="form-control mx-2" placeholder="New Todo" maxlength="60" name="description"
+              required aria-label="Description" aria-describedby="newTodoDescription">
+            <button type="submit" class="mx-1 btn btn-success"><i class="mdi mdi-plus"></i></button>
+          </form>
+  `
+  AppState.todos.forEach(td => offcanvasTemplate += td.ListTemplate)
+  offcanvasTemplate += /*html*/`        
+        </div>
+      </div>
+    </div>
+  `
+  setHTML('oncanvasTodoHeader', oncanvasTemplate)
+  setHTML('offcanvasTodoList', offcanvasTemplate)
 }
 
 function _remainingCount() {

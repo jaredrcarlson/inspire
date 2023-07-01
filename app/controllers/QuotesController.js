@@ -1,11 +1,15 @@
 import { AppState } from "../AppState.js"
 import { quotesService } from "../services/QuotesService.js"
 import { Pop } from "../utils/Pop.js"
-import { setText } from "../utils/Writer.js"
+import { setHTML } from "../utils/Writer.js"
 
 function _draw() {
-  setText('quote', `"${AppState.quote.content}"`)
-  setText('quote-author', `-- ${AppState.quote.author}`)
+  setHTML('quote', /*html*/`
+    <div class="py-2 d-flex justify-content-center" onmouseover="app.QuotesController.show('quoteAuthor')" onmouseleave="app.QuotesController.hide('quoteAuthor')">
+      <i class="font-rh-display fs-5">"${AppState.quote.content}"</i>
+      <i id="quoteAuthor" class="ms-3 font-rh-display fs-5" style="display:none;">-- ${AppState.quote.author}</i>
+    </div>
+  `)
 }
 
 export class QuotesController {

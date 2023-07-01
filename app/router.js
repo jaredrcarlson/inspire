@@ -11,7 +11,7 @@ import { WeatherController } from "./controllers/WeatherController.js";
 export const router = [
   {
     path: '',
-    controller: [ImagesController, TodosController, QuotesController, WeatherController, ClockController],
+    controller: [TodosController, ImagesController, QuotesController, WeatherController, ClockController],
     view: ''
   }
 ]

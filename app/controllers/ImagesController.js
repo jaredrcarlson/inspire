@@ -1,10 +1,15 @@
 import { AppState } from "../AppState.js"
 import { imagesService } from "../services/ImagesService.js"
 import { Pop } from "../utils/Pop.js"
+import { setHTML } from "../utils/Writer.js"
 
 function _draw() {
   document.body.style.backgroundImage = `url(${AppState.image.largeImgUrl})`
-  document.getElementById('image-author').innerText = AppState.image.author
+  setHTML('imageAuthor', /*html*/`
+    <div class="py-1 text-bg-dark rounded opacity-75">
+      <i class="ps-3">Photo by: ${AppState.image.author}</i>
+    </div>
+  `)
 }
 
 export class ImagesController {

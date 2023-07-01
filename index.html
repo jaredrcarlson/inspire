@@ -73,71 +73,56 @@
 
     <section id="router-view">
 
-      <!-- SECTION BACKGROUND IMAGE & IMAGE AUTHOR -->
       <section class="container-fluid">
-        <div class="row justify-content-start">
-          <div class="col-2 text-light">
-            <div class="py-2 px-4 caption fw-bolder">
-              <div class="">Image by</div>
-              <div id="image-author" class="ms-2">Hank Aaron</div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- SECTION TODOS -->
-      <section class="container-fluid">
-        <div class="row justify-content-end">
-          <div class="col-3">
-            <div id="todo-list" class="p-3 text-bg-dark rounded"></div>
-          </div>
-        </div>
-      </section>
+        <!-- SECTION BACKGROUND IMAGE AUTHOR -->
+        <div class="row justify-content-between">
+          <div id="imageAuthor" class="col-2 ms-4"></div>
 
-      <!-- SECTION QUOTE & QUOTE AUTHOR -->
-      <section class="container-fluid">
+          <!-- SECTION TODOS -->
+          <div id="oncanvasTodoHeader" class="col-2 me-5"></div>
+        </div>
+
+        <div id="offcanvasTodoList" class="row justify-content-end"></div>
+
+
+        <div style="height: 60dvh; background-color: rgba(255,0,0,0.0);">
+
+        </div>
+
         <div class="row justify-content-around">
-          <div class="col-10 ms-3 quote-area text-center text-light">
-            <div class="py-2" onmouseover="app.QuotesController.show('quote-author')"
-              onmouseleave="app.QuotesController.hide('quote-author')">
-              <i id="quote" class="m-0 font-rh-display fs-5"></i>
-              <i id="quote-author" class="m-0 font-rh-display fs-5" style="display:none;"></i>
-            </div>
-          </div>
+          <div id="quote" class="col-10 ms-3 quote-area text-center text-light"></div>
         </div>
-      </section>
 
-      <!-- SECTION WEATHER | CLOCK | USER -->
-      <section class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-10 text-bg-dark rounded-pill opacity-75">
             <div class="row py-2 justify-content-between align-items-center">
 
-              <!-- WEATHER -->
+              <!-- SECTION WEATHER -->
               <div class="col-2 my-1" onclick="app.WeatherController.nextTemperatureDisplay()">
                 <div class="d-flex align-items-center selectable">
-                  <div id="weather-icon" class="mx-1"></div>
+                  <div id="weatherIcon" class="mx-1"></div>
                   <div class="ms-1 fs-4 py-1">
-                    <div id="weather-temp"></div>
-                    <div id="weather-kind"></div>
+                    <div id="weatherTemp"></div>
+                    <div id="weatherKind"></div>
                   </div>
                 </div>
               </div>
 
-              <!-- CLOCK -->
-              <div class="col-4 font-rh-mono text-center">
-                <div id="clock-time" class="fs-4"></div>
-                <div id="clock-date" class="fs-5"></div>
+              <!-- SECTION CLOCK -->
+              <div class="col-4 font-rh-mono text-center selectable" onclick="app.ClockController.toggleFormat()">
+                <div id="clockTime" class="fs-4"></div>
+                <div id="clockDate" class="fs-5"></div>
               </div>
 
-              <!-- USER -->
+              <!-- SECTION USER -->
               <div class="col-2 me-5">
                 <div class="d-flex align-items-center justify-content-center selectable">
                   <div class="ms-1 fs-4 py-1">
-                    <div id="weather-temp"></div>
-                    <div id="weather-kind"></div>
+                    <div id="weatherTemp"></div>
+                    <div id="weatherKind"></div>
                   </div>
-                  <div id="account-img" class="md-1"></div>
+                  <div id="accountImg" class="md-1"></div>
                 </div>
               </div>
 
@@ -146,9 +131,8 @@
 
           </div>
         </div>
+
       </section>
-
-
 
     </section>
 
