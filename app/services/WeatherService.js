@@ -9,6 +9,11 @@ class WeatherService {
       AppState.weather = new Weather(res.data)
     }
   }
+
+  nextTemperatureDisplay() {
+    AppState.weather.nextTemperatureDisplay()
+    AppState.emit('weather')
+  }
 }
 
 export const weatherService = new WeatherService()

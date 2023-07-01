@@ -28,3 +28,9 @@ body {
 .font-rh-disp {
   font-family: 'Red Hat Display', sans-serif;
 }
+
+.weather-img {
+  height: 80px;
+  width: 80px;
+  object-fit: fill;
+}
