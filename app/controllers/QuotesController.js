@@ -5,7 +5,7 @@ import { setHTML } from "../utils/Writer.js"
 
 function _draw() {
   setHTML('quote', /*html*/`
-    <div class="py-2 d-flex justify-content-center" onmouseover="app.QuotesController.show('quoteAuthor')" onmouseleave="app.QuotesController.hide('quoteAuthor')">
+    <div class="py-2 font-stroke d-flex justify-content-center" onmouseover="app.QuotesController.show('quoteAuthor')" onmouseleave="app.QuotesController.hide('quoteAuthor')">
       <i class="font-rh-display fs-5">"${AppState.quote.content}"</i>
       <i id="quoteAuthor" class="ms-3 font-rh-display fs-5" style="display:none;">-- ${AppState.quote.author}</i>
     </div>

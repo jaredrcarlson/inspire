@@ -9,11 +9,11 @@ function drawUser() {
   const userAvatar = avatarTemplate(account)
   const button = authButton(user)
   const template = /* html */ `
-    ${userAvatar}
     ${button}
+    ${userAvatar}
   `
   // @ts-ignore
-  document.getElementById('authstate').innerHTML = template
+  document.getElementById('account').innerHTML = template
 }
 
 function _drawAuthSettings() {
@@ -41,10 +41,10 @@ function _drawAuthSettings() {
 }
 export class AuthController {
   constructor() {
-    // AppState.on('account', drawUser)
-    // AuthService.on(AuthService.AUTH_EVENTS.LOADED, drawUser)
-    // AuthService.on(AuthService.AUTH_EVENTS.LOADED, _drawAuthSettings)
-    // drawUser()
+    AppState.on('account', drawUser)
+    AuthService.on(AuthService.AUTH_EVENTS.LOADED, drawUser)
+    AuthService.on(AuthService.AUTH_EVENTS.LOADED, _drawAuthSettings)
+    drawUser()
   }
 
   async login() {
@@ -79,8 +79,8 @@ function avatarTemplate(account) {
   return account
     ? /* html */ `
     <div class="mr-2">
-      <img class="rounded-circle" src="${account.picture}" alt="${account.name}" height="45"/>
       <span class="mx-1">${account.name}</span>
+      <img class="rounded-circle" src="${account.picture}" alt="${account.name}" height="60"/>
       </div>`
     : AuthService.loading
       ? /* html */ `
