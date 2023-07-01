@@ -2,6 +2,7 @@ import { AppState } from '../AppState.js'
 import { audience, clientId, domain } from '../env.js'
 import { AuthService } from '../services/AuthService.js'
 import { logger } from '../utils/Logger.js'
+import { ClockController } from './ClockController.js'
 
 function drawUser() {
   const user = AppState.user
@@ -68,10 +69,13 @@ function authButton(user) {
   if (AuthService.loading) { return '' }
   return user && user.isAuthenticated
     ? /* html */ `
-    <button class="btn btn-small btn-dark text-muted selectable" onclick="app.AuthController.logout()"><i class="mdi mdi-logout f-16 text-white"></i></button>
+    <div class="d-flex align-items-center rounded selectable" onclick="app.AuthController.logout()">
+    <div class="ps-2 pe-1">LOGOUT</div>
+    <i class="pe-1 mdi mdi-logout f-24 text-white"></i>
+    </div>
   `
     : /* html */ `
-    <button class="btn btn-dark selectable" onclick="app.AuthController.login()">login</button>
+    <button class="btn btn-dark selectable" onclick="app.AuthController.login()">LOGIN</button>
   `
 }
 
@@ -79,7 +83,7 @@ function avatarTemplate(account) {
   return account
     ? /* html */ `
     <div class="mr-2">
-      <span class="mx-1">${account.name}</span>
+      <span class="mx-3">Good ${ClockController.TimeOfDay()}!</span>
       <img class="rounded-circle" src="${account.picture}" alt="${account.name}" height="60"/>
       </div>`
     : AuthService.loading
