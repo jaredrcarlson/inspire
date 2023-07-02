@@ -6,7 +6,7 @@ export class Weather {
       fahrenheit: Number(Weather.KelvinToFahrenheit(data.main.temp))
     }
     this.kind = data.weather['0'].main // Ex: Sunny, Cloudy, etc.
-    this.iconUrl = data.weather.icon.replace('undefined', data.weather['0'].icon)
+    this.iconUrl = data.weather.icon.replace('undefined', `${data.weather['0'].icon}@4x`)
     this.temperatureDisplayQueue = [
       `${this.temperature.celsius.toFixed(0)} \xB0C`,
       `${this.temperature.fahrenheit.toFixed(0)} \xB0F`,
