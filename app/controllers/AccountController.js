@@ -11,7 +11,7 @@ function _drawAccountEditForm() {
 }
 
 function _drawGreeting() {
-  setHTML('greeting', `Good ${ClockController.TimeOfDay()}!`)
+  setHTML('greeting', `Good ${ClockController.TimeOfDay()},`)
   setHTML('userName', `${AppState.account.name}`)
 }
 

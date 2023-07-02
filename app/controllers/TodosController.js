@@ -6,7 +6,7 @@ import { setHTML, setText } from "../utils/Writer.js"
 
 function _draw() {
   let oncanvasTemplate = /*html*/`
-  <div class="py-2 d-flex align-items-center justify-content-around text-bg-dark font-rh-mono fs-5 rounded-pill opacity-75">
+  <div class="py-2 panel d-flex align-items-center justify-content-around text-secondary font-rh-mono fs-5 rounded-pill">
     <div id="todosRemainingOncanvas" class="px-2 border border-2 border-secondary rounded-pill text-secondary">${_remainingCount()}</div>
     <div class="px-1 text-secondary">To-Do</div>
     <i class="mdi mdi-checkbox-marked-circle-plus-outline fs-3 btn-custom" data-bs-toggle="offcanvas" data-bs-target="#todoList" aria-controls="todoList"></i>
@@ -15,7 +15,7 @@ function _draw() {
 
   let offcanvasTemplate = /*html*/`
     <div class="col-3 font-rh-display">
-      <div id="todoList" class="p-3 text-bg-dark rounded offcanvas offcanvas-end">
+      <div id="todoList" class="p-3 text-secondary panel rounded offcanvas offcanvas-end">
         <div class="offcanvas-header font-rh-mono fs-5">
           <div id="todosRemainingOffcanvas" class="ms-2 px-2 border border-2 border-secondary rounded-pill text-secondary">${_remainingCount()}</div>
           <div class="text-secondary">To-Do Items</div>
@@ -25,7 +25,7 @@ function _draw() {
         <div class="offcanvas-body">
           <form onsubmit="app.TodosController.create(event)"
             class="mb-3 d-flex align-items-center justify-content-between">
-            <input type="text" class="form-control mx-2" placeholder="New Todo" maxlength="60" name="description"
+            <input type="text" class="form-control mx-2" placeholder="New Todo" minlength="2" maxlength="20" name="description"
               required aria-label="Description" aria-describedby="newTodoDescription">
             <button type="submit" class="mx-1 btn btn-success"><i class="mdi mdi-plus"></i></button>
           </form>

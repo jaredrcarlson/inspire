@@ -63,14 +63,14 @@ function authButton(user) {
   return user && user.isAuthenticated
     ? /* html */ `
     <div class="d-flex align-items-center justify-content-center btn-custom" onclick="app.AuthController.logout()">
-      <div class="me-3 fs-5 font-rh-mono">LOGOUT</div>
-      <i class="mdi mdi-logout fs-1"></i>
+      <div class="me-3 font-rh-display fw-bold">LOGOUT</div>
+      <i class="mdi mdi-logout fs-2"></i>
     </div>
     `
     : /* html */ `
     <div class="d-flex align-items-center justify-content-center btn-custom" onclick="app.AuthController.login()">
-      <div class="me-3 fs-5 font-rh-mono">LOGIN</div>
-      <i class="mdi mdi-login fs-1"></i>
+      <div class="me-3 font-rh-display fw-bold">LOGIN</div>
+      <i class="mdi mdi-login fs-2"></i>
     </div>
   `
 }
