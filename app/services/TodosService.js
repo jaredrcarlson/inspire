@@ -22,7 +22,6 @@ class TodosService {
       const res = await api.put(`api/todos/${id}`, { completed: !todoItem.completed })
       if (res.data) {
         AppState.todos.splice(todoItemIndex, 1, new Todo(res.data))
-        AppState.emit('todos')
       }
     }
   }

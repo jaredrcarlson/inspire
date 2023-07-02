@@ -6,10 +6,14 @@ import { setHTML } from "../utils/Writer.js"
 function _draw() {
   document.body.style.backgroundImage = `url(${AppState.image.largeImgUrl})`
   setHTML('imageAuthor', /*html*/`
-    <div class="py-1 text-bg-dark rounded opacity-75">
-      <i class="ps-3">Photo by: ${AppState.image.author}</i>
-    </div>
-  `)
+    <div class="py-1 text-bg-dark rounded-pill opacity-75 d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center text-secondary">
+        <i class="ms-4">Photo by:</i>
+        <i class="ps-2 font-rh-display fs-5">${AppState.image.author}</i>
+      </div>
+        <i class="mdi mdi-refresh me-3 btn-custom fs-4" onclick="app.GeneralController.nextImageAndQuote()"></i>
+      </div>
+      `)
 }
 
 export class ImagesController {

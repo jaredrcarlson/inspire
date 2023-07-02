@@ -8,7 +8,14 @@ export class Todo {
 
   get ListTemplate() {
     return /*html*/`
-    <div class="mb-2 d-flex justify-content-between">
+    <div id="${this.id}" class="mb-2 d-flex justify-content-between">
+      ${this.UpdateTemplate}
+    </div>
+    `
+  }
+
+  get UpdateTemplate() {
+    return /*html*/`
       <div class="d-flex align-items-center">
         <input class="mx-3 selectable"${this.completed ? ' checked' : ''} type="checkbox" name="completed" onclick="app.TodosController.toggleStatus('${this.id}')">
         <p class="mb-1${this.completed ? ' todo-completed' : ' fw-bold'}">${this.description}</p>
@@ -16,7 +23,6 @@ export class Todo {
       <div class="d-flex align-items-center">
         <button class="me-2 btn btn-sm btn-danger selectable" onclick="app.TodosController.delete('${this.id}')"><i class="mdi mdi-delete"></i></button>
       </div>
-    </div>
     `
   }
 }

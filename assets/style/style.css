@@ -8,17 +8,22 @@ body {
   text-decoration: line-through;
 }
 
-/* FIXME - transition not working */
-.quote-area {
-  transition: 1s ease-in-out;
+.quote:hover+.quote-author {
+  opacity: 100%;
+  transition: opacity 1s;
 }
 
-.quote-area:hover {
-  cursor: default;
+.quote-author {
+  opacity: 0%;
+}
+
+.fade-in:hover {
+  opacity: 100%;
+  transition: opacity 1s;
 }
 
 .blur {
-  filter: blur(.5px);
+  filter: blur(.25px);
 }
 
 .font-rh-mono {
@@ -42,4 +47,26 @@ body {
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
+}
+
+.btn-custom {
+  color: #aeb0c5;
+}
+
+.btn-custom:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+.zoom {
+  transition: transform .2s;
+}
+
+.zoom:hover {
+  transform: scale(1.25);
+  cursor: pointer;
 }

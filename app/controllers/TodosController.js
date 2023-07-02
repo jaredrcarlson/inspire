@@ -2,14 +2,14 @@ import { AppState } from "../AppState.js"
 import { todosService } from "../services/TodosService.js"
 import { getFormData } from "../utils/FormHandler.js"
 import { Pop } from "../utils/Pop.js"
-import { setHTML } from "../utils/Writer.js"
+import { setHTML, setText } from "../utils/Writer.js"
 
 function _draw() {
   let oncanvasTemplate = /*html*/`
   <div class="py-2 d-flex align-items-center justify-content-around text-bg-dark font-rh-mono fs-5 rounded-pill opacity-75">
-    <div class="ms-2 px-2 border border-2 rounded-pill">${_remainingCount()}</div>
-    <div>To-Do Items</div>
-    <button class="btn btn-dark rounded-pill fs-4" data-bs-toggle="offcanvas" data-bs-target="#todoList" aria-controls="todoList">></button>
+    <div id="todosRemainingOncanvas" class="px-2 border border-2 border-secondary rounded-pill text-secondary">${_remainingCount()}</div>
+    <div class="px-1 text-secondary">To-Do</div>
+    <i class="mdi mdi-checkbox-marked-circle-plus-outline fs-3 btn-custom" data-bs-toggle="offcanvas" data-bs-target="#todoList" aria-controls="todoList"></i>
   </div>
   `
 
@@ -17,10 +17,10 @@ function _draw() {
     <div class="col-3 font-rh-display">
       <div id="todoList" class="p-3 text-bg-dark rounded offcanvas offcanvas-end">
         <div class="offcanvas-header font-rh-mono fs-5">
-          <div class="ms-2 px-2 border border-2 rounded-pill">${_remainingCount()}</div>
-          <div>To-Do Items</div>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-            aria-label="Close"></button>
+          <div id="todosRemainingOffcanvas" class="ms-2 px-2 border border-2 border-secondary rounded-pill text-secondary">${_remainingCount()}</div>
+          <div class="text-secondary">To-Do Items</div>
+          <button type="button" class="btn btn-dark rounded-pill fs-4" data-bs-dismiss="offcanvas"
+            aria-label="Close"><i class="mdi mdi-arrow-right-thick"></i></button>
         </div>
         <div class="offcanvas-body">
           <form onsubmit="app.TodosController.create(event)"
@@ -38,6 +38,15 @@ function _draw() {
   `
   setHTML('oncanvasTodoHeader', oncanvasTemplate)
   setHTML('offcanvasTodoList', offcanvasTemplate)
+}
+
+function _drawUpdatedTodoItem(id) {
+  const item = AppState.todos.find(td => td.id == id)
+  if (item) {
+    setHTML(id, item.UpdateTemplate)
+    setText('todosRemainingOffcanvas', _remainingCount())
+    setText('todosRemainingOncanvas', _remainingCount())
+  }
 }
 
 function _remainingCount() {
@@ -81,6 +90,7 @@ export class TodosController {
   async toggleStatus(id) {
     try {
       await todosService.toggleStatus(id)
+      _drawUpdatedTodoItem(id)
     } catch (error) {
       this.reportError(error)
     }

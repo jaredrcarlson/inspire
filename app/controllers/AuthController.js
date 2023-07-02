@@ -2,19 +2,11 @@ import { AppState } from '../AppState.js'
 import { audience, clientId, domain } from '../env.js'
 import { AuthService } from '../services/AuthService.js'
 import { logger } from '../utils/Logger.js'
-import { ClockController } from './ClockController.js'
+import { setHTML } from '../utils/Writer.js'
 
 function drawUser() {
-  const user = AppState.user
-  const account = AppState.account
-  const userAvatar = avatarTemplate(account)
-  const button = authButton(user)
-  const template = /* html */ `
-    ${button}
-    ${userAvatar}
-  `
-  // @ts-ignore
-  document.getElementById('account').innerHTML = template
+  setHTML('avatar', avatarTemplate(AppState.account))
+  setHTML('auth', authButton(AppState.user))
 }
 
 function _drawAuthSettings() {
@@ -40,11 +32,12 @@ function _drawAuthSettings() {
   </div>
 `
 }
+
 export class AuthController {
   constructor() {
     AppState.on('account', drawUser)
     AuthService.on(AuthService.AUTH_EVENTS.LOADED, drawUser)
-    AuthService.on(AuthService.AUTH_EVENTS.LOADED, _drawAuthSettings)
+    // AuthService.on(AuthService.AUTH_EVENTS.LOADED, _drawAuthSettings)
     drawUser()
   }
 
@@ -69,13 +62,16 @@ function authButton(user) {
   if (AuthService.loading) { return '' }
   return user && user.isAuthenticated
     ? /* html */ `
-    <div class="d-flex align-items-center rounded selectable" onclick="app.AuthController.logout()">
-    <div class="ps-2 pe-1">LOGOUT</div>
-    <i class="pe-1 mdi mdi-logout f-24 text-white"></i>
+    <div class="d-flex align-items-center justify-content-center btn-custom" onclick="app.AuthController.logout()">
+      <div class="me-3 fs-5 font-rh-mono">LOGOUT</div>
+      <i class="mdi mdi-logout fs-1"></i>
     </div>
-  `
+    `
     : /* html */ `
-    <button class="btn btn-dark selectable" onclick="app.AuthController.login()">LOGIN</button>
+    <div class="d-flex align-items-center justify-content-center btn-custom" onclick="app.AuthController.login()">
+      <div class="me-3 fs-5 font-rh-mono">LOGIN</div>
+      <i class="mdi mdi-login fs-1"></i>
+    </div>
   `
 }
 
@@ -83,8 +79,7 @@ function avatarTemplate(account) {
   return account
     ? /* html */ `
     <div class="mr-2">
-      <span class="mx-3">Good ${ClockController.TimeOfDay()}!</span>
-      <img class="rounded-circle" src="${account.picture}" alt="${account.name}" height="60"/>
+      <img class="rounded-circle zoom" src="${account.picture}" alt="${account.name}" height="60"/>
       </div>`
     : AuthService.loading
       ? /* html */ `
