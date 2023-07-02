@@ -31,10 +31,13 @@ function _draw() {
           </form>
   `
   AppState.todos.forEach(td => offcanvasTemplate += td.ListTemplate)
-  offcanvasTemplate += /*html*/`        
-        </div>
-      </div>
-    </div>
+  offcanvasTemplate += /*html*/`
+      ${AppState.todos.length > 1 ?
+      `<div class="mt-3 text-center">
+          <button class="btn btn-sm btn-danger selectable" onclick="app.TodosController.clear()">DELETE ALL</button>
+        </div>`
+      : ''}
+      </div></div></div>
   `
   setHTML('oncanvasTodoHeader', oncanvasTemplate)
   setHTML('offcanvasTodoList', offcanvasTemplate)
@@ -106,4 +109,13 @@ export class TodosController {
     }
   }
 
+  async clear() {
+    if (await Pop.confirm()) {
+      try {
+        await todosService.clear()
+      } catch (error) {
+        this.reportError(error)
+      }
+    }
+  }
 }

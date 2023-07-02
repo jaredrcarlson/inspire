@@ -6,6 +6,7 @@ import { DateController } from "./controllers/DateController.js";
 import { ClockController } from "./controllers/ClockController.js";
 import { AccountController } from "./controllers/AccountController.js";
 import { GeneralController } from "./controllers/GeneralController.js";
+import { MainView } from "./views/MainView.js";
 
 /**
  * Register your routes for the application here
@@ -24,7 +25,7 @@ export const router = [
       AccountController,
       GeneralController
     ],
-    view: ''
+    view: MainView
   }
 ]
 

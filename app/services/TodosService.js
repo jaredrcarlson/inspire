@@ -37,6 +37,17 @@ class TodosService {
     }
   }
 
+  async clear() {
+    while (AppState.todos.length) {
+      const todo = AppState.todos[AppState.todos.length - 1]
+      const res = await api.delete(`api/todos/${todo.id}`)
+      if (!res.data) {
+        break
+      }
+      AppState.todos.splice(-1, 1)
+    }
+    AppState.emit('todos')
+  }
 }
 
 export const todosService = new TodosService()

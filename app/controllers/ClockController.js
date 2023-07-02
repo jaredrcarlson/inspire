@@ -56,11 +56,11 @@ export class ClockController {
   static TimeOfDay() {
     const hour = new Date().getHours()
     if (hour < 12) {
-      return 'morning'
+      return 'Morning'
     } else if (hour < 18) {
-      return 'afternoon'
+      return 'Afternoon'
     } else {
-      return 'evening'
+      return 'Evening'
     }
   }
 }

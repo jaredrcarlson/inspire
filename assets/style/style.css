@@ -1,8 +1,10 @@
 /* BASIC STYLES HERE */
 body {
+  background: none;
   background-size: cover;
   background-position: center;
-  transition: opacity 1s;
+  transition-property: background;
+  transition-duration: 1s;
 }
 
 .panel {
@@ -11,7 +13,7 @@ body {
 }
 
 .spacer {
-  height: 62dvh;
+  height: 60dvh;
 }
 
 .todo-completed {

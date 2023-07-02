@@ -32,7 +32,7 @@ export class ImagesController {
   }
 
   addDarkFilter() {
-    document.body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${AppState.image.largeImgUrl})`
+    document.body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${AppState.image.largeImgUrl})`
   }
 
   removeDarkFilter() {
