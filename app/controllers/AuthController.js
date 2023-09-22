@@ -43,7 +43,11 @@ export class AuthController {
 
   async login() {
     try {
-      await AuthService.loginWithRedirect()
+      await AuthService.loginWithRedirect({
+        authorizationParams: {
+          redirect_uri: 'https://jaredcarlson.dev/inspire/'
+        }
+      })
     } catch (e) {
       logger.error(e)
     }
